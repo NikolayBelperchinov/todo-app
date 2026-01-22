@@ -1,0 +1,286 @@
+/* Основен фон и layout на страницата */
+.app-page {
+  min-height: 100vh;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #020617, #020617 40%, #111827);
+  display: block; /* вече не центрираме с flex, а оставяме ширина */
+}
+
+.app-layout {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+  padding: 2rem;
+  box-sizing: border-box;
+  color: #e5e7eb;
+
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Панели */
+.panel {
+  background: #020617;
+  border-radius: 16px;
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.45);
+  padding: 1.5rem 1.75rem;
+}
+
+/* Ляв/десен панел – пропорции на desktop */
+.panel-left,
+.panel-right {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.18),
+    rgba(14, 165, 233, 0.12)
+  );
+  border: 1px solid rgba(96, 165, 250, 0.35);
+  border-radius: 16px;
+  padding: 1.75rem;
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.panel-left {
+  flex: 0 0 420px;
+}
+
+.panel-right {
+  flex: 1;
+}
+
+.app-title {
+  font-size: clamp(1.8rem, 2.4vw, 2.8rem);
+  margin-bottom: 0.25rem;
+}
+
+.app-subtitle {
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  color: #9ca3af;
+  margin-bottom: 1.5rem;
+}
+.field-label,
+.stats-row,
+.filters-row,
+.task-meta-row,
+.empty-text {
+  font-size: clamp(0.75rem, 0.9vw, 0.95rem);
+}
+
+.task-title {
+  font-size: clamp(0.9rem, 1.05vw, 1.15rem);
+}
+
+.field-group {
+  margin-bottom: 0.75rem;
+}
+
+.field-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-bottom: 0.2rem;
+}
+
+.text-input {
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid #111827;
+  background: #020617;
+  color: #e5e7eb;
+  outline: none;
+}
+
+.text-input:focus {
+  border-color: #2563eb;
+}
+
+/* Две колони за срок + приоритет */
+.field-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Бутон Добави */
+.btn {
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition:
+    transform 0.05s ease,
+    box-shadow 0.1s ease,
+    background 0.2s ease;
+}
+
+.btn-primary {
+  margin-top: 0.4rem;
+  width: 100%;
+  padding: 0.7rem;
+  background: linear-gradient(135deg, #3b82f6, #22c55e);
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+}
+
+/* Статистика и филтри */
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.chip {
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid #1f2937;
+  background: transparent;
+  color: #9ca3af;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.chip-active {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  color: #fff;
+}
+
+/* Списък със задачи */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: #020617;
+  padding: 0.7rem 0.7rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  border-left: 4px solid transparent;
+}
+
+.task-item input[type="checkbox"] {
+  margin-top: 0.15rem;
+}
+
+.task-main {
+  flex: 1;
+}
+
+.task-title {
+  font-size: 0.95rem;
+}
+
+.task-completed .task-title {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.task-meta-row {
+  margin-top: 0.2rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+}
+
+.task-tag {
+  color: #9ca3af;
+}
+
+.task-tag-overdue {
+  color: #f97373;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  color: #f97373;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Текст, когато няма задачи */
+.empty-text {
+  text-align: center;
+  margin-top: 1rem;
+  color: #9ca3af;
+}
+
+/* 📱 MOBILE (до ~640px) – колоните стават една под друга */
+@media (max-width: 640px) {
+  .app-page {
+    padding: 1rem;
+  }
+
+  .app-layout {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .panel {
+    padding: 1.1rem 1.1rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.45);
+  }
+
+  .panel-right {
+    max-height: none;
+  }
+
+  .app-title {
+    font-size: 1.6rem;
+  }
+
+  .field-row {
+    flex-direction: column;
+  }
+}
+
+/* 📲 TABLET (641–1024px) – панелите пак една под друга, но по-широки */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .app-layout {
+    flex-direction: column;
+    max-width: 900px;
+  }
+
+  .panel-right {
+    max-height: 60vh;
+  }
+}
+
+/* 🖥 DESKTOP WIDE (над 1440px) – малко повече въздух */
+@media (min-width: 1440px) {
+  .app-layout {
+    max-width: 1500px;
+  }
+
+  .panel {
+    padding: 2rem 2.25rem;
+  }
+
+  .app-title {
+    font-size: 2.2rem;
+  }
+}

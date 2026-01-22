@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-backend-deployment
+  namespace: todo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-backend
+  template:
+    metadata:
+      labels:
+        app: todo-backend
+    spec:
+      containers:
+        - name: todo-backend
+          image: nikolaybelperchinov/todo-backend:v2
+          ports:
+            - containerPort: 5000
+          env:
+            - name: DATABASE_URL
+              value: postgresql://todo_user:todo_password@todo-postgres-service:5432/todo_db
+            - name: FLASK_RUN_HOST
+              value: "0.0.0.0"
+            - name: FLASK_RUN_PORT
+              value: "5000"
