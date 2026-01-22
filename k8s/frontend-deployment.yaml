@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: todo-frontend
-          image: nikolaybelperchinov/todo-frontend:v3
+          image: nikolaybelperchinov/todo-frontend:v4
           ports:
             - containerPort: 80
