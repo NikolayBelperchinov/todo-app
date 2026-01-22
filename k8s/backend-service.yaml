@@ -4,9 +4,10 @@ metadata:
   name: todo-backend-service
   namespace: todo-app
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: todo-backend
   ports:
     - port: 5000
       targetPort: 5000
+      nodePort: 30081
